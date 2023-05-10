@@ -1,0 +1,6 @@
+# 页面参数说明
+
+## 参数说明
+
+## map-btn.vue && index.vue 页面共有参数名
+* btnType：按钮点击类型 例：marker、label等

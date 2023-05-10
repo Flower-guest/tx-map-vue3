@@ -1,0 +1,61 @@
+{
+  "name": "vue3-ts-cms",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "build:prod": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "commit": "cz"
+  },
+  "resolutions": {
+    "bin-wrapper": "npm:bin-wrapper-china"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "@vueuse/core": "^9.13.0",
+    "axios": "^0.27.2",
+    "commitizen": "^4.2.5",
+    "element-plus": "^2.3.1",
+    "font-awesome": "^4.7.0",
+    "normalize-css": "^2.3.1",
+    "normalize.css": "^8.0.1",
+    "pinia": "^2.0.22",
+    "pinia-plugin-persistedstate": "^2.2.0",
+    "vite-plugin-vue-setup-extend": "^0.4.0",
+    "vue": "^3.2.37",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@iconify-json/ic": "^1.1.13",
+    "@types/node": "^18.7.18",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "@unocss/transformer-directives": "^0.50.6",
+    "@vitejs/plugin-vue": "^3.1.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.24.0",
+    "eslint-plugin-vue": "^9.5.1",
+    "sass": "^1.60.0",
+    "terser": "^5.16.9",
+    "typescript": "^4.6.4",
+    "unocss": "^0.49.7",
+    "unplugin-auto-import": "^0.11.2",
+    "unplugin-vue-components": "^0.22.7",
+    "vite": "^3.1.0",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-imagemin": "^0.6.1",
+    "vite-plugin-pages": "^0.26.0",
+    "vue-tsc": "^0.40.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
