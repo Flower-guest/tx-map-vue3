@@ -50,7 +50,7 @@ class Request {
         if (data?.code == 200 || data?.code == 1) {
           return data.data || data;
         } else {
-          ElMessage.error(data.msg);
+          ElMessage.error(data?.msg || "网络超时");
         }
       },
       (err) => {

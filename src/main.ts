@@ -5,6 +5,9 @@ import pinia from "./store";
 import pluginMain from "./plugins";
 import "uno.css";
 import "normalize.css/normalize.css";
+import "./assets/styles/index.scss";
+import 'font-awesome/css/font-awesome.min.css';
+
 const app = createApp(App);
 
 pluginMain(app);

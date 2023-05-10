@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
-    redirect: "/map",
+    redirect: "/home",
   },
   {
     path: "/map",
@@ -12,6 +12,25 @@ const routes: RouteRecordRaw[] = [
       title: "首页",
     },
     children: [],
+  },
+  {
+    path: "/home",
+    name: "home",
+    component: () => import("@/pages/index/navBar.vue"),
+  },
+  {
+    path: "/test",
+    name: "test",
+    component: () => import("@/components/test.vue"),
+  },
+  {
+    path: "/customer",
+    name: "customer",
+    component: () => import("@/pages/customer/customer.vue"),
+  },
+  {
+    path: "/detail",
+    component: () => import("@/pages/customer/detail.vue"),
   },
 ];
 

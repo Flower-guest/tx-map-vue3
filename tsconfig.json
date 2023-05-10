@@ -3,6 +3,7 @@
    "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
+    "useDefineForClassFields": true,
     "strict": true,
     "noLib": false,
     "forceConsistentCasingInFileNames": true,
@@ -19,13 +20,14 @@
     "lib": ["dom", "esnext"],
     "noImplicitAny": false,
     "skipLibCheck": true,
+    "types": ["element-plus/global"],
     "removeComments": true,
     "baseUrl": "./",
-    "types": [
-      "vite/client",
-      "vite-plugin-pages/client",
-      "element-plus/global",
-    ],
+    // "types": [
+    //   "vite/client",
+    //   "vite-plugin-pages/client",
+    //   "element-plus/global",
+    // ],
     "paths": {
       "@/*": ["src/*"]
     }
