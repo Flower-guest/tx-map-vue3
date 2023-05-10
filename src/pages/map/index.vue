@@ -103,7 +103,8 @@ const handleBtnClick = (val: any, btnType: string) => {
 // 图层点击事件例如:marker|label|DOMOverlay
 const handleLayersClick = (val: any, btnType: string) => {
   if (val == 'cancelForm') {
-    state.isShowForm = false
+    state.isShowForm = false;
+    btnType == 'marker' && mapBtn.value.stopEdit(localStorage.getItem('layerId')); // marker取消编辑后点击无效，需要退出编辑模式
   } else {
     if (!state.isShowForm) state.isShowForm = true;
     state.formObj = JSON.parse(JSON.stringify(val));

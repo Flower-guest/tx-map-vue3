@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import createMapPlugins from '@/components/map/index'
-import { btnArr } from "../config/btnForm"
+import { btnArr } from "../config/btnConfig"
 import throttle from "@/utils/throttle"
 import { ElMessage, ElMessageBox } from 'element-plus';
 
@@ -40,10 +40,12 @@ const initData = (mapPlugins) => {
 // 地图初始化时如果有对应的点击对象就添加点击事件
 const initClick = (mapPlugins) => {
   btnArr.forEach(v => {
-    if (v.btnType == "DOMOverlay") {
-      mapPlugins[v.btnType][v.btnType] && addDOMOverlayClick(v.btnType);
-    } else {
-      mapPlugins[v.btnType][v.btnType] && mapPlugins[v.btnType][v.btnType].on("click", (evt) => layersClick(evt, v.btnType));
+    if (mapPlugins[v.btnType][v.btnType]) {
+      if (v.btnType == "DOMOverlay") {
+        addDOMOverlayClick(v.btnType);
+      } else {
+        mapPlugins[v.btnType][v.btnType].on("click", (evt) => layersClick(evt, v.btnType));
+      }
     }
   })
 }
@@ -57,7 +59,6 @@ const addClick = throttle((btnType) => {
     // 避免新添加的按钮没有点击事件
     if (mapPlugins[btnType][btnType] != null) mapPlugins[btnType][btnType].off("click", (evt) => layersClick(evt, btnType));
     mapPlugins[btnType].add();
-    mapPlugins[btnType][btnType].on("click", (evt) => layersClick(evt, btnType));
     if (btnType.indexOf('poly') != -1) {//如果是画线，需要监听绘制结束事件才去取值，否则取值永远慢一步
       drawEnd(btnType)
     } else {
@@ -151,7 +152,11 @@ const drawEnd = (btnType) => {
     handleBtnClick(btnType); //因为慢半拍只能去刷新页面强行更新数据，没想到更好的解决方法。
   });
 }
-defineExpose({ init, addClick, layersRemove, layersUpdate, setMap, saveData })
+// marker取消编辑后点击无效，需要退出编辑模式
+const stopEdit = (id) => {
+  mapPlugins['marker'].stopEdit(id);
+}
+defineExpose({ init, addClick, layersRemove, layersUpdate, setMap, saveData, stopEdit })
 </script>
 
 <style lang="scss" scoped>

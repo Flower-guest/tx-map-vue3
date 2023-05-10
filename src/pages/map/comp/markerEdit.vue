@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { markerEditEL } from "../config/btnForm"
+import { markerEditEL } from "../config/formConfig"
 const dialogVisible = ref(false);
 const editForm = ref<any>({})
 const editEL = ref(markerEditEL);

@@ -20,6 +20,11 @@ class Marker {
     this.marker = new TMap.MultiMarker({
       id: "marker-layer",
       map: this.map,
+      styles: {
+        highlight: new TMap.MarkerStyle({
+          src: "https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/marker-pink.png",
+        }),
+      },
     });
     // 判断是否配置了默认markers
     if (markers) {
@@ -49,16 +54,13 @@ class Marker {
     } else {
       this.update(this.defaultMarker);
     }
-    // 添加移动事件
-    // if (Object.keys(this.marker._events).length === 0) this.moveMarker();
     // 当有个marker被点击后出现新增时被点击的marker被删除，所以将数组合并去重一下避免被删
     this.arrMerge();
   }
   // 修改marker
   update(val) {
     const defaultStyles = this.marker.styles.default;
-    this.editor && this.editor.removeOverlay(val.id);
-    this.editor && this.editor.stop(); //退出编辑模式
+    this.stopEdit(val.id);
     // 修改marker样式
     this.setStyle(val, defaultStyles);
     // 修改定位跟marker名
@@ -101,8 +103,7 @@ class Marker {
   // 删除marker
   remove(id) {
     if (id) {
-      this.editor.removeOverlay(id);
-      this.editor.stop(); //退出编辑模式
+      this.stopEdit(id);
       this.marker.remove([id]);
       this.geometries = this.marker.geometries;
     }
@@ -137,6 +138,11 @@ class Marker {
     this.editor.on("adjust_complete", (geometry) => {
       this.moveOverPosition = geometry.position;
     });
+  }
+  //退出编辑模式
+  stopEdit(id) {
+    this.editor && this.editor.removeOverlay(id);
+    this.editor && this.editor.stop();
   }
 }
 

@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- <el-form :model="form" label-width="100px" label-position="left">
-      <template v-for="item in formEls" :key="item.label"> -->
     <el-form-item :label="item.label">
       <!-- 输入框 -->
       <template v-if="item.type == 'input'">
@@ -45,8 +43,6 @@
         <el-color-picker v-model="form[item.field]" show-alpha />
       </template>
     </el-form-item>
-    <!-- </template>
-    </el-form> -->
   </div>
 </template>
 

@@ -56,7 +56,7 @@
 
 <script lang="ts" setup>
 import { Edit } from '@element-plus/icons-vue'
-import { formEl, formFooterBtn, selectOpt } from "../config/btnForm";
+import { formEl, formFooterBtn, selectOpt } from "../config/formConfig";
 import MarkerEdit from "./markerEdit.vue";
 
 defineProps({
@@ -96,7 +96,7 @@ const emit = defineEmits(['delete', 'cancel', 'save', 'rank']);
 const footerClick = (type) => {
   switch (type) {
     case "delete": emit('delete', setae.formEls.type); break; //删除按钮
-    case "cancel": emit('cancel', 'cancelForm'); break; //取消按钮
+    case "cancel": emit('cancel', 'cancelForm', setae.formEls.type); localStorage.setItem('layerId', setae.form.id); break; //取消按钮
     case "rank": visible.value = !visible.value; emit('rank', setae.form, setae.formEls.type); break; //label移动事件
     case "edit": markerEdit.value.openDiaglog(setae.form.edit); break; //marker编辑事件
     default: emit('save', setae.form, setae.formEls.type); //保存按钮

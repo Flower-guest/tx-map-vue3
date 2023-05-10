@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-import { btnArr } from "../config/btnForm"
+import { btnArr } from "../config/btnConfig"
 import { Edit, Plus } from '@element-plus/icons-vue'
 const props = defineProps({
   showTotal: Boolean,
@@ -45,8 +45,8 @@ const props = defineProps({
   title: String
 })
 
-const totalTitle =  computed(() => {
-  return btnArr.filter(item => item.btnType == props.title ).map(x => x.title)[0];
+const totalTitle = computed(() => {
+  return btnArr.filter(item => item.btnType == props.title).map(x => x.title)[0];
 })
 
 const emit = defineEmits(['close', 'add', 'aim', 'edit']);
