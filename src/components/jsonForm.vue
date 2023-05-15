@@ -60,6 +60,11 @@ const props = defineProps<Props>()
 const form = toRef(props, 'form');
 const item = toRef(props, 'item');
 
+watch(
+  () => props.form,
+  () => { initRadioVal() }
+)
+
 const initRadioVal = () => {
   if (!form.value[item.value.field] && item.value.type == 'radio') form.value[item.value.field] = item.value.radio[0].value;
 }
