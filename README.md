@@ -1,16 +1,14 @@
 <p align="center">
     <img src="https://img.shields.io/badge/-Vue3-34495e?logo=vue.j" />
-    <img src="https://img.shields.io/badge/-Vite3.1-646cff?logo=vite&logoColor=white" />
+    <img src="https://img.shields.io/badge/-Vite4.3-646cff?logo=vite&logoColor=white" />
     <img src="https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white" />
     <img src="https://img.shields.io/badge/-Pinia-yellow?logo=picpay&logoColor=white" />
     <img src="https://img.shields.io/badge/-ESLint-4b32c3?logo=eslint&logoColor=white" />
     <img src="https://img.shields.io/badge/-pnpm-F69220?logo=pnpm&logoColor=white" />
     <img src="https://img.shields.io/badge/-Axios-008fc7?logo=axios.js&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Prettier-ef9421?logo=Prettier&logoColor=white" alt="Prettier">
-    <img src="" alt="">
 </p>
 
-一个开箱即用，快速搭建大型应用的 Vue3 + Vite3 + TypeScript+...模板框架。集成了各类插件，并进行了模块化和按需加载的优化，可以放心使用。
+一个开箱即用，基于腾讯地图开发的地图工具。
 
 
 ## 代码规范
@@ -36,62 +34,25 @@
 │    ├── utils           // 工具类
 │    ├── App.vue
 │    ├── main.ts
-├── viteConfig           //vite配置文件
+├── viteConfig           // vite配置文件
 ├── tsconfig.json        // ts配置
 └── vite.config.ts       // vite全局配置
 ```
 
 
-## 🎸UI 组件按需加载，自动导入
+# 具体功能
+ * 添加marker点位
+ * 添加文本（label）
+ * 遮盖物
+ * 画线、画多边形
 
-```typescript
-//模块化写法
-import Components from 'unplugin-vue-components/vite';
-import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
- Components({
-      dirs: ['src/components'],
-      dts: 'types/components.d.ts',
-      extensions: ['vue'],
-      resolvers: [AntDesignVueResolver()],
-    }),
-```
-
-## 🎸API自动导入
-
-```typescript
-//模块化写法
-import AutoImport from 'unplugin-auto-import/vite' //自动导入api
-import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
-  AutoImport({
-      imports: ['vue', "vue/macros", 'vue-router', "pinia"],
-      // 在 Vue 模板中自动导入
-      vueTemplate: true,
-      dts: 'types/auto-imports.d.ts',
-    }),
-```
-
-# 使用脚手架[文档](https://www.npmjs.com/package/cxj-cli)
-
-```shell
-# 安装脚手架
-npm install cxj-cli -g
-
-# 创建项目
-xj create <packgeName>
-```
-
-# ⚠️ 注意使用脚手架安装项目
-
-* 该模板仓库使用的包管理为pnpm，创建项目前请先安装pnpm，否则会出现依赖安装报错。
-
-# 代码拉去使用
 
 ```shell
 # 拉取仓库代码
-git clone  https://github.com/Flower-guest/projectBuildTemplate.git
+git clone git@github.com:Flower-guest/tx-map-vue3.git
 
 # 进入项目文件夹
-cd ProjectBuildTemplate
+cd tx-map-vue3
 
 # 安装项目依赖
 pnpm install
