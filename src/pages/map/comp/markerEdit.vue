@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-dialog v-model="dialogVisible" :close-on-click-modal="false" title="marker编辑" width="30%"
+    <el-dialog
+      v-model="dialogVisible" :close-on-click-modal="false" title="marker编辑" width="30%"
       :before-close="() => dialogVisible = false">
       <el-form :model="editForm" label-width="100px" label-position="left">
         <template v-for="item in editEL" :key="item.label">

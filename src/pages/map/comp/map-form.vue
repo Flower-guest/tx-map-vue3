@@ -111,7 +111,7 @@ const saveEdit = (val) => {
 defineExpose({ initForm });
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .footer .el-button {
   padding: 4px 8px;
   font-size: 12px;

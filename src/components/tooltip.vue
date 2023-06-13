@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-tooltip :visible="visible" content="移动至此处" placement="bottom" effect="light" trigger="click" virtual-triggering
+    <el-tooltip
+      :visible="visible" content="移动至此处" placement="bottom" effect="light" trigger="click" virtual-triggering
       :virtual-ref="triggerRef" @update:visible="updateVisible" />
   </div>
 </template>

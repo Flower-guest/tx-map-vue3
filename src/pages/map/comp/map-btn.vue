@@ -159,7 +159,7 @@ const stopEdit = (id) => {
 defineExpose({ init, addClick, layersRemove, layersUpdate, setMap, saveData, stopEdit })
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .map_btn {
   .el-button+.el-button {
     margin-left: 0;

@@ -20,8 +20,8 @@
           </el-col>
           <el-col :span="8">
             <div class="flex items-center cursor-pointer" @click="edit(item)"> <el-icon>
-                <Edit />
-              </el-icon>
+                                                                                 <Edit />
+                                                                               </el-icon>
               <span class="text-12px">编辑</span>
             </div>
           </el-col>
@@ -68,4 +68,4 @@ const edit = (item) => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="less" scoped></style>

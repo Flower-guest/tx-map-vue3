@@ -1,15 +1,17 @@
 <template>
-  <div class="w-full h-full">
-
+  <div class="w-100vw h-100vh">
     <!-- 功能按钮 -->
-    <MapBtn class="map_btn absolute top-50px left-50px z-2000" ref="mapBtn" @handle-btn-click="handleBtnClick"
+    <MapBtn
+      class="map_btn absolute top-50px left-50px z-2000" ref="mapBtn" @handle-btn-click="handleBtnClick"
       @layers-click="handleLayersClick" />
     <!-- 功能按钮对应的数据列表表单 -->
-    <MapTotal class="map_total absolute top-50px left-200px z-2000 max-h-300px overflow-y-auto" @close="handleBtnClick"
+    <MapTotal
+      class="map_total absolute top-50px left-200px z-2000 max-h-300px overflow-y-auto" @close="handleBtnClick"
       @add="handleAddTotalClick" @aim="handleAimTotalClick" @edit="handleLayersClick" :show-total="state.isShowTotal"
       :total-obj="state.totalObj" :title="state.btnType" />
     <!-- 详情数据表单 -->
-    <MapForm ref="mapForm" @delete="handleDeleteFormClick" @cancel="handleLayersClick" @save="handleSaveFormClick"
+    <MapForm
+      ref="mapForm" @delete="handleDeleteFormClick" @cancel="handleLayersClick" @save="handleSaveFormClick"
       @rank="layersMove" :isShowForm="state.isShowForm" />
     <!-- 地图 -->
     <div class="w-full h-full" id="container"></div>
@@ -25,7 +27,6 @@ import MapBtn from './comp/map-btn.vue';
 import MapForm from './comp/map-form.vue';
 import MapTotal from './comp/map-total.vue';
 import { indexState, UrlParams } from "./config/types"
-import { requestMapDataInit, requestMapDataSave } from "@/service/map";
 import localCache from "@/utils/Cache";
 import { ElMessage, ElMessageBox } from 'element-plus';
 
@@ -57,18 +58,16 @@ let obj: UrlParams; //截取路径参数
 // 初始化Map
 const initMap = async () => {
   obj = getUrlParams();
-  const { id } = obj;
-  const params = { IDIP: 184, id };
-  state.mapDataInit = await requestMapDataInit(params);
+  console.log(obj);
   map = new TMap.Map('container', {
-    zoom: state.mapDataInit.zoom, // 设置地图缩放
-    center: new TMap.LatLng(state.mapDataInit.lat, state.mapDataInit.lng),
+    zoom: 17, // 设置地图缩放
+    // center: new TMap.LatLng(state.mapDataInit.lat, state.mapDataInit.lng),
     renderOptions: {
       enableBloom: true, // 折线是否启用泛光效果 注：为true才会有效果
     },
   });
   // 生成个性化地图
-  TMap.ImageTileLayer.createCustomLayer({
+  state.mapDataInit.layer_id && TMap.ImageTileLayer.createCustomLayer({
     layerId: state.mapDataInit.layer_id,
     map: map
   }).then(customLayer => {
@@ -147,22 +146,17 @@ const layersMoveSave = (evt: any) => {
 const savePage = () => {
   state.isSavePage = true;
   const params2 = {
-    IDIP: 185,
-    id: obj.id,
     markers: mapBtn.value.saveData('marker'),
     labels: mapBtn.value.saveData('label'),
     doms: mapBtn.value.saveData('DOMOverlay'),
     polylines: mapBtn.value.saveData('polyline'),
   };
-  requestMapDataSave(params2).then((res) => {
-    if (res) {
-      ElMessage({
-        showClose: true,
-        message: '表单保存成功',
-        type: 'success',
-      })
-    }
-  });
+  console.log(params2);
+  ElMessage({
+    showClose: true,
+    message: '表单保存成功',
+    type: 'success',
+  })
 }
 // 页面重置
 const resetPage = () => {
@@ -197,4 +191,4 @@ onMounted(async () => {
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="less" scoped></style>

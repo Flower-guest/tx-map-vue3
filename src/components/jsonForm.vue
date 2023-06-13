@@ -20,7 +20,8 @@
       </template>
       <!-- 上传 -->
       <template v-else-if="item.type == 'upload'">
-        <el-upload accept="image/png, image/jpeg" :limit="1" ref="uploadRef" class="avatar-uploader"
+        <el-upload
+          accept="image/png, image/jpeg" :limit="1" ref="uploadRef" class="avatar-uploader"
           :on-change="handleChange" :http-request="uploadFile" :show-file-list="false">
           <template v-if="form[item.field]">
             <img :src="form[item.field]" class="w-80px" />
@@ -98,7 +99,7 @@ const uploadFile: UploadRequestHandler = async (options: UploadRequestOptions) =
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .el-form-item {
   margin-bottom: 6px;
 }
